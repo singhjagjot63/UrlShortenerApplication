@@ -1,8 +1,10 @@
 package com.urlShortner.URLShortner.consumer;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.urlShortner.URLShortner.service.UrlShortenerService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,10 +17,10 @@ public class URLConsumer {
     UrlShortenerService urlShortenerService;
 
     @PostMapping("${get.request.path}")
-    public void generateShortUrl(@RequestBody String url,
+    public void generateShortUrl(@RequestBody JSONObject url,
                                  HttpServletRequest httpServletRequest) {
         urlShortenerService.setServletRequest(httpServletRequest);
-        urlShortenerService.fetchShortenedUrl(url);
+        urlShortenerService.fetchShortenedUrl(url.get("longUrl").toString());
     }
 
     @GetMapping("{key}")
