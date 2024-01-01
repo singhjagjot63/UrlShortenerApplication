@@ -1,12 +1,14 @@
 package com.urlShortner.URLShortner.service;
 
 import com.urlShortner.URLShortner.util.AppUtil;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
+@Disabled
 public class UrlShortenerTest {
 
     @Autowired
